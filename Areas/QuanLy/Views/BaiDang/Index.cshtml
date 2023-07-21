@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = " Bài Đăng";
+}
+@model List<QLDV.Data.Article>
+<div class="container-fluid">
+    <div class="card">
+
+        <div class="card-body">
+            <h5 class="card-title">Danh sách Bài Đăng</h5>
+            <a asp-controller="BaiDang" asp-action="Add">
+                <span> Thêm Bài Đăng </span>
+            </a>
+            <div class="table-responsive">
+                <table id="zero_config"
+                       class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Lượt xem
+                            </th>
+                            <th>
+                                Tiêu đề
+                            </th>
+                            <th>
+                                Mô tả
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            if (Model != null && Model.Count >= 1)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Id
+                                        </td>
+
+                                        <td>
+                                            @item.Viewed
+                                        </td>
+
+                                        <td>
+                                            @item.Title
+                                        </td>
+
+                                        <td>
+                                            @item.Content
+                                        </td>
+
+                                        <td>
+
+                                            <a class="btn btn-outline-success" asp-area="QuanLy" asp-controller="BaiDang" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+
+
+                                            @if (item.Pdf != null)
+                                            {
+                                                <a class="btn btn-outline-warning" href="~/Articles/@item.Pdf">Đọc File</a>
+
+                                            }
+
+                                            <a class="btn btn-outline-danger" asp-area="QuanLy" asp-controller="BaiDang" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

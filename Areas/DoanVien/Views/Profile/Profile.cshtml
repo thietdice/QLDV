@@ -1,0 +1,192 @@
+﻿@model QLDV.Data.User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    	<title>Đoàn Viên</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+     <!-- Libraries Stylesheet -->
+    <link href="~/DoanVien/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/DoanVien/dist/css/style.css" rel="stylesheet">
+
+</head>
+
+    <body>
+   
+    <div class="card">
+        <div class="card-body">
+            <div class="margin-horizontal">
+                <h5 class="card-title mb-0">Thông tin cá nhân</h5>
+             <a class="btn btn-primary text-white" asp-action="Edit" asp-controller="Profile">Sửa</a>
+            </div>
+            <div class="margin-horizontal" >
+                <div class="formGroup mt-3">
+                <div class="mt-3">
+                <label>
+                    Mã sinh viên<b class="text-danger">(*)</b>
+                </label>
+                <input id="IdStudent" type="text"
+                        asp-for="IdStudent"
+                       class="form-control date-inputmask" readonly
+                       />
+                    </div>
+            <div class="mt-3" >
+                <label>
+                    Họ và tên<b class="text-danger">(*)</b>
+                </label>
+                <input id="Fullname" type="text"
+                    asp-for="Fullname"
+                       class="form-control date-inputmask" readonly
+                       />
+            </div>
+              <div class="margin-horizontal">
+                <div class="formGroup mt-3">
+                <label>
+                   Ngày sinh<b class="text-danger">(*)</b>
+                </label>
+                <input id="Birthday" type="date"
+                    asp-for="Birthday"
+                       class="form-control date-inputmask" readonly
+                       />
+            </div>
+            <div class="formGroup mt-3">
+                <label>
+                  Giới tính<b class="text-danger">(*)</b>
+                </label>
+              <input asp-for="Gender" class="form-control date-inputmask" readonly />
+            </div>
+            </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Hình ảnh
+                        </label>
+                        <div >
+                            <div>
+                                <img id="ImagePrev" src="~/Users/Images/@Model.Image" width="230" height="230" style="border:1px " />
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
+          
+            <div class="margin-horizontal ">
+                <div class="formGroup mt-3">
+                <label>
+                  Dân tộc<b class="text-danger">(*)</b>
+                </label>
+                <input asp-for="Ethnic" class="form-control date-inputmask" readonly />
+            </div><div class="formGroup mt-3">
+                <label>
+                 Tôn giáo<b class="text-danger">(*)</b>
+                </label>
+                      <input asp-for="Religion" class="form-control date-inputmask" readonly/> 
+            </div>
+            <div class="formGroup mt-3">
+                <label>
+                  Nghề nghiệp<b class="text-danger">(*)</b>
+                </label>
+                <input asp-for="Profession" class="form-control date-inputmask" readonly />
+            </div>
+            <div class="formGroup mt-3">
+                <label>
+                  Số điện thoại
+                </label>
+                <input type="text" asp-for="Phone" class="form-control date-inputmask" readonly/>
+            </div>  
+            </div>            					
+                <div class="margin-horizontal">
+                            <div class="formGroup mt-3">
+                                <label>
+                                    <span>Thường trú (Tỉnh/Thành Phố) <b class="text-danger">(*)</b></span>
+                                </label>
+                                  <input asp-for="ResidenceCity" class="form-control date-inputmask" readonly />
+                            </div>
+                        
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Thường trú (Quận/Huyện) <b class="text-danger">(*)</b></span>
+                                </label>
+                                 <input id="ResidenceDistrict"  type="text" asp-for="ResidenceDistrict" class="form-control date-inputmask" readonly />
+                           
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Thường trú (Phường xã) <b class="text-danger">(*)</b></span>
+                                </label>
+                                  <input id="ResidenceWard" type="text" asp-for="ResidenceWard" class="form-control date-inputmask"  readonly/>
+                            </div>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Thường trú (Địa chỉ cụ thể) <b class="text-danger">(*)</b></span>
+                                </label>
+                                <input id="ResidenceAddress" type="text" asp-for="ResidenceAddress" class="form-control date-inputmask"  readonly/>
+                        </div>	
+                         <div class="margin-horizontal">
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Trình độ văn hóa <b class="text-danger">(*)</b></span>
+                                </label>
+                                <input asp-for="LevelEducation" class="form-control date-inputmask" readonly />
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Trình độ chuyên môn</span>
+                                </label>
+                              <input asp-for="LevelSpecialize" class="form-control date-inputmask" readonly />
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Lí luận chính trị</span>
+                                </label>
+                            <input asp-for="LevelPolitics" class="form-control date-inputmask" readonly/>
+                        </div>
+                        </div>
+                        <div class="margin-horizontal">
+                             <div class="formGroup mt-3">
+                                <label >
+                                    <span>Tin học</span>
+                                </label>
+                                <input asp-for="LevelComputer" class="form-control date-inputmask" readonly />
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Ngoại ngữ</span>
+                                </label>
+                               <input asp-for="LevelLanguage" class="form-control date-inputmask" readonly />
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Chức vụ Hội</span>
+                                </label>
+                                <select asp-for="UserCatalogueId" class="form-control date-inputmask" disabled >
+                                <option value="1">Đoàn Viên</option>
+                                <option value="2">Bí thư Chi Đoàn</option>
+                                <option value="3">Bí thư Liên Chi Đoàn</option>
+                                <option value="4">Bí thư Đoàn Trường</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label class="control-label text-left">
+                                    <span>Ngày vào Đoàn <b class="text-danger">(*)</b></span>
+                                </label>
+                                <input type="date" asp-for="DayInUnion"class="form-control datetimepicker" readonly/>
+                        </div>
+            
+                </div>
+               
+                </div>
+
+  </body>
+
+</html>  

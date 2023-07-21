@@ -1,0 +1,65 @@
+﻿@model List<QLDV.Data.Event>
+@using Microsoft.AspNetCore.Hosting;
+@using System.IO;
+
+@inject IWebHostEnvironment env
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   
+
+    <!-- Favicon -->
+    <link rel="stylesheet" href="~/DoanVien/assets/vendors/bootstrap/bootstrap.bundle.min.js">
+  <link rel="stylesheet" href="~/DoanVien//assets/vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/linericon/style.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.carousel.min.css">
+
+  <link rel="stylesheet" href="~/DoanVien/dist/css/style.css">
+
+</head>
+    <body>
+            <section class="blog-post-area section-margin mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+              @if (Model != null && Model.Count >= 1)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <a asp-controller="Events" asp-action="EventsInfo" asp-route-eventId="@item.Id" style="display:block;">
+                                <div class="single-recent-blog-post">
+                                <div class="thumb" style="border:1px solid black;">
+                                    <img class="img-fluid"  src="~/Events/images/@item.Image" style="object-fit:cover;width:100%" alt="AnhSK">
+                                    <ul class="thumb-info">
+                                        <li><i class="ti-user"></i>Admin</li>
+                                        <li><i class="ti-notepad"></i>@item.DayStart</li>
+                                       
+                                    </ul>
+                                    
+                                </div>
+                                <div class="details mt-20">
+                                    <a asp-controller="Events" asp-action="EventsInfo" asp-route-eventId="@item.Id">
+                                        <h3>@item.Title</h3>
+                                    </a>
+                                  
+                                    <p>@item.Description</p>
+                                    <a class="button" asp-controller="Events" asp-action="EventsInfo" asp-route-eventId="@item.Id">Xem chi tiết <i class="ti-arrow-right"></i></a>
+
+                                </div>
+                            </div>
+                            </a>
+                        }
+                    }
+          </div>
+
+          <!-- Start Blog Post Siddebar -->
+        
+            </div>
+          <!-- End Blog Post Siddebar -->
+        </div>
+    </section>
+    </body>
+</html>

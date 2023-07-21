@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Liên Chi Đoàn";
+}
+@model List<QLDV.Data.Faculty>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Danh sách Liên Chi Đoàn</h5>
+            <a asp-controller="LienChiDoan" asp-action="Add">
+                <span> Thêm Liên Chi Đoàn </span>
+            </a>
+            <div class="table-responsive">
+                <table id="zero_config"
+                       class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Tên Liên Chi Đoàn
+                            </th>
+                            <th>
+                                Mã Liên Chi Đoàn
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count >= 1)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Id
+                                    </td>
+                                    <td>
+                                        @item.Title
+                                    </td>
+                                    <td>
+                                        @item.ShortTitle
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-outline-success" asp-controller="LienChiDoan" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                                        <a class="btn btn-outline-warning" asp-controller="LienChiDoan" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
+                                        <a class="btn btn-outline-danger" asp-controller="LienChiDoan" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

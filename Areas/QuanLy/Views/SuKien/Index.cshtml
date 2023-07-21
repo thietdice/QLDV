@@ -1,0 +1,116 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = " Học kì";
+}
+@model List<QLDV.Data.Event>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Danh sách sự kiện</h5>
+            @if (Context.Session.GetInt32("Rank") >= 3)
+            {
+                <a asp-controller="SuKien" asp-action="Add">
+                    <span> Thêm Sự Kiện </span>
+                </a>
+            }
+
+            <div class="table-responsive">
+                <table id="zero_config"
+                       class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th width="70">
+                                Hình Ảnh
+                            </th>
+                            <th>
+                                Kì học
+                            </th>
+                            <th>
+                                Tên
+                            </th>
+                            <th>
+                                Ngày bắt đầu
+                            </th>
+                            <th>
+                                Ngày kết thúc
+                            </th>
+                            <th>
+                                Trị giá Điểm
+                            </th>
+                            <th width="125">
+                                Trạng thái
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count >= 1)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Id
+                                    </td>
+                                    <td>
+                                        <img src="~/Events/images/@item.Image" width="70" height="50">
+                                    </td>
+
+                                    @foreach (var c in ViewBag.Semesters)
+                                    {
+                                        if (c.Id == item.SemesterId)
+                                        {
+                                            <td>
+                                                @c.Title
+                                            </td>
+                                        }
+                                    }
+
+                                    <td>
+                                        @item.Title
+                                    </td>
+                                    <td>
+                                        @item.DayStart.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+                                        @item.DayEnd.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+                                        @item.Score
+                                    </td>
+
+                                    @if (item.Publish == true)
+                                    {
+                                        <td>
+                                            Hoạt động
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            Không hoạt động
+                                        </td>
+                                    }
+
+                                    <td>
+                                        <a class="btn btn-outline-success" asp-controller="SuKien" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+
+                                        <a class="btn btn-outline-danger" asp-controller="SuKien" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+
+                                        <a class="btn btn-outline-warning" asp-controller="SuKien" asp-action="Active" asp-route-id="@item.Id">Chuyển đổi</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

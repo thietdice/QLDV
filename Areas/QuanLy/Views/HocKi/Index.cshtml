@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = " Học kì";
+}
+@model List<QLDV.Data.Semester>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Danh sách Kì học</h5>
+            @if (Context.Session.GetInt32("Rank") == 4)
+            {
+                <a asp-controller="HocKi" asp-action="Add">
+                    <span> Thêm Kì Học </span>
+                </a>
+            }
+
+            <div class="table-responsive">
+                <table id="zero_config"
+                       class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Tên
+                            </th>
+                            <th>
+                                Ngày bắt đầu
+                            </th>
+                            <th>
+                                Ngày kết thúc
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            if (Model != null && Model.Count >= 1)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Id
+                                        </td>
+
+                                        <td>
+                                            @item.Title
+                                        </td>
+
+                                        <td>
+                                            @item.DayStart.ToString("dd/MM/yyyy")
+                                        </td>
+
+                                        <td>
+                                            @item.DayEnd.ToString("dd/MM/yyyy")
+                                        </td>
+                                        <td>
+                                            @if (Context.Session.GetInt32("Rank") == 4)
+                                            {
+                                                <a class="btn btn-outline-success" asp-controller="HocKi" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                                                <a class="btn btn-outline-danger" asp-controller="HocKi" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                                            }
+                                            <a class="btn btn-outline-warning" asp-controller="HocKi" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

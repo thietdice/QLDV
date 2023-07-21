@@ -1,0 +1,53 @@
+﻿@model List<QLDV.Data.Article>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   
+
+    <!-- Favicon -->
+    <link rel="stylesheet" href="~/DoanVien/assets/vendors/bootstrap/bootstrap.bundle.min.js">
+  <link rel="stylesheet" href="~/DoanVien//assets/vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/linericon/style.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.carousel.min.css">
+
+  <link rel="stylesheet" href="~/DoanVien/dist/css/style.css">
+
+</head>
+    <body>
+            <section class="blog-post-area section-margin mt-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                            @if (Model != null && Model.Count >= 1)
+                            {
+                            @foreach (var item in Model)
+                            {
+                                 <div class="single-recent-blog-post" style="border-bottom:1px solid #999999">
+                                
+                                <div class="details mt-20 mb-30px">
+                                    <a href="blog-single.html">
+                                        <h3>@item.Title</h3>
+                                        
+                                    </a>  
+                                    <div class="thumb">
+                                    <ul class="thumbinfo" >
+                                        <li><i class="ti-user"></i>Admin</li>
+                                        <li><i class="ti-notepad"></i>@item.CreatedAt</li>
+                                    </ul>
+                                </div>
+                                    <p>@item.Content</p>
+                                    <a class="button" asp-controller="Home" asp-action="ArticleInfo" asp-route-articleId="@item.Id">Xem chi tiết <i class="ti-arrow-right"></i></a>
+
+                                </div>
+                            </div>
+                            }
+                        }
+              </div>       
+            </div>
+        </div>
+    </section>
+    </body>
+</html>

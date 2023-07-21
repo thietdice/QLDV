@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model QLDV.Data.Faculty
+<div class="container-fluid">
+    <div class="card">
+        <form class="form-horizontal" method="post" asp-area="QuanLy" asp-controller="LienChiDoan" asp-action="Edit">
+            <div class="card-body">
+                <h4 class="card-title">Cập nhật thông tin</h4>
+                <div class="form-group row">
+                    <label for="fname"
+                           class="col-sm-3 text-end control-label col-form-label">Id</label>
+                    <div class="col-sm-9">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Id"
+                               placeholder="Id" readonly />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="fname"
+                           class="col-sm-3 text-end control-label col-form-label">Tên Liên Chi Đoàn</label>
+                    <div class="col-sm-9">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Title"
+                               placeholder="Tên chi đoàn" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lname"
+                           class="col-sm-3 text-end control-label col-form-label">Mã Lên Chi Đoàn</label>
+                    <div class="col-sm-9">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="ShortTitle"
+                               placeholder="e.g:CNTT" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="cono1"
+                           class="col-sm-3 text-end control-label col-form-label">Mô tả</label>
+                    <div class="col-sm-9">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top">
+                <div class="card-body">
+                    <button type="submit" class="btn btn-primary">
+                        Sửa
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

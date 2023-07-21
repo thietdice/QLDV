@@ -1,0 +1,166 @@
+﻿@{
+    ViewData["Title"] = "Đoàn Viên";
+}
+@model QLDV.Areas.DoanVien.Models.ArticleEventViewModel
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <!-- Favicon -->
+    <link rel="stylesheet" href="~/DoanVien/assets/vendors/bootstrap/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="~/DoanVien//assets/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/DoanVien/assets/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="~/DoanVien/assets/vendors/linericon/style.css">
+    <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/DoanVien/dist/css/slideshow.css">
+    <link rel="stylesheet" href="~/DoanVien/dist/css/style.css">
+</head>
+
+<body>
+    <main>
+        <div class=" w3-display-container" style="width:100%">
+            @if (Model.Events != null && Model.Events.Count >= 1)
+            {
+                @foreach (var item in Model.Events)
+                {
+                    <a asp-controller="Events" asp-action="EventsInfo" asp-route-eventId="@item.Id" style="display:block">
+                        <div class="mySlides">
+                            <img src="~/Events/images/@item.Image" style="width:100%;height: 75vh;object-fit:cover;">
+                            <div class="w3-display-bottomleft w3-large w3-container w3-padding-16">
+                                <h3 style="color: #fff;
+                                    font-size: 25px;
+                                    line-height: 1.2;
+                                    font-weight: 700;
+                                    margin-bottom: 10px ;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;">
+                                    @item.Title
+                                </h3>
+                                <p style="color: #fff;font-size: 16px;font-weight: 300;margin-bottom: 10px ;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">@item.Content</p>
+                                <a class="linkEvent" asp-controller="Events" asp-action="EventsInfo" asp-route-eventId="@item.Id">Xem thêm<i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </a>
+                }
+
+            }
+            <div class="w3-button w3-white w3-display-left" onclick="plusDivs(-1)">&#10094;</div>
+            <div class="w3-button w3-white w3-display-right" onclick="plusDivs(1)">&#10095;</div>
+            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+                @if (Model.Events != null && Model.Events.Count >= 1)
+                {
+                    @for (int i = 0; i < Model.Events.Count; i++)
+                    {
+                        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(@(i + 1))"></span>
+                    }
+                }
+            </div>
+        </div>
+
+        <!--------------------------------------------------->
+        <section>
+            <div class="container">
+                <h1 style="text-transform:uppercase;margin: 25px 0;text-align:center;font-size:30px ;color:#0D509C">Các chương trình, Sự kiện đang diễn ra</h1>
+                <div class="owl-carousel owl-theme blog-slider">
+                    @if (Model.Events != null && Model.Events.Count >= 1)
+                    {
+                        @foreach (var item in Model.Events)
+                        {
+                            <div class="card blog__slide text-center">
+                                <div class="blog__slide__img">
+                                    <img class="card-img rounded-0" src="~/Events/images/@item.Image" alt="" style="height:30vh">
+                                </div>
+                                <div class="blog__slide__content" style="background-color:#cccccc59">
+
+                                    <a asp-controller="Events" asp-action="EventsInfo" asp-route-eventId="@item.Id">
+                                        <h3 style="font-size:18px">@item.Title</h3>
+
+                                    </a>
+                                    <p>Thời gian: @item.DayStart.Date.ToShortDateString() - @item.DayEnd.Date.ToShortDateString()</p>
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!--================ Blog slider end =================-->
+        <section class="blog-post-area section-margin mt-4" style="background-color:#cccccc59">
+            <div class="container">
+                <h1 style="text-transform:uppercase;text-align:center;font-size:30px ;color:#0D509C">bài viết mới nhất</h1>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            @if (Model.Articles != null && Model.Articles.Count >= 1)
+                            {
+                                int count = 0;
+                                @foreach (var item in Model.Articles)
+                                {
+                                    if (count < 4)
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="single-recent-blog-post">
+
+                                                <div class="details mt-20 mb-30px">
+                                                    <a asp-controller="Home" asp-action="ArticleInfo" asp-route-articleId="@item.Id">
+                                                        <h3 style="font-size:18px">@item.Title</h3>
+
+                                                    </a>
+                                                    <div class="thumb">
+                                                        <ul class="thumbinfo">
+                                                            <li><i class="ti-user"></i>Admin</li>
+                                                            <li><i class="ti-notepad"></i>@item.CreatedAt</li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>@item.Content</p>
+                                                    <a class="button" asp-controller="Home" asp-action="ArticleInfo" asp-route-articleId="@item.Id">Xem chi tiết <i class="ti-arrow-right"></i></a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    count++;
+                                }
+                            }
+
+
+
+                        </div>
+
+
+
+                        <!-- End Blog Post Siddebar -->
+                    </div>
+
+
+                </div>
+                <div style="text-align:center">
+                    <a class="button" asp-area="DoanVien" asp-action="Article" asp-controller="Home">Xem thêm</a>
+                </div>
+            </div>
+        </section>
+        <!--================ Start Blog Post Area =================-->
+        <!-- Contact End -->
+    </main>
+
+
+
+    <!-- Back to Top -->
+    <script src="~/DoanVien/dist/js/slideshow.js"></script>
+    <script src="~/DoanVien/assets/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/DoanVien/assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="~/DoanVien/assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/DoanVien/dist/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/DoanVien/dist/js/mail-script.js"></script>
+    <script src="~/DoanVien/dist/js/main.js"></script>
+</body>
+
+</html>

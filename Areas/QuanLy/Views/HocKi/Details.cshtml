@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model QLDV.Data.Semester
+<div class="container-fluid">
+    <div class="card">
+        <form class="form-horizontal" method="post" asp-area="QuanLy" asp-controller="HocKi" asp-action="Edit" asp-route-id="@Model.Id">
+            <div class="card-body">
+                <h4 class="card-title">Nhập thông tin</h4>
+                <div class="form-group">
+                    <label>
+                        Tên
+
+                    </label>
+                    <input asp-for="Title" type="date"
+                           class="form-control  "
+                           id="phone-mask"
+                           placeholder=" Kì * Năm **** - ****" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Ngày Bắt Đầu
+                    </label>
+                    <input type="date"
+                           class="form-control"
+                           asp-for="DayStart"
+                           readonly />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Ngày Kết Thúc
+                    </label>
+                    <input type="date"
+                           class="form-control"
+                           asp-for="DayEnd"
+                           readonly />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Ngày tạo
+                    </label>
+                    <input type="date"
+                           class="form-control"
+                           asp-for="CreatedAt"
+                           readonly />
+                </div>
+                <div class="form-group">
+                    <label>
+                        Ngày cập nhật cuối
+                    </label>
+                    <input type="text"
+                           class="form-control"
+                           asp-for="UpdatedAt"
+                           readonly />
+                </div>
+                <div class="form-group">
+                    <label>
+                        Người tạo
+                    </label>
+                    @{
+                        foreach (var u in ViewBag.User)
+                        {
+                            if (Model.UseridCreated == u.Id)
+                            {
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="@u.Fullname"
+                                       readonly />
+                            }
+                        }
+                    }
+
+                </div>
+                <div class="form-group">
+                    <label>
+                        Người cập nhật cuối
+                    </label>
+                    @{
+                        foreach (var u in ViewBag.User)
+                        {
+                            if (Model.UseridUpdated == u.Id)
+                            {
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="@u.Fullname"
+                                       readonly />
+                            }
+                        }
+                    }
+                </div>
+
+
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model QLDV.Data.Faculty
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title mb-0">Chi tiết</h5>
+            <div class="form-group mt-3">
+                <label>
+                    ID
+                    <small class="text-muted"> Mã trong hệ thống</small>
+                </label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="Id"
+                       readonly />
+            </div>
+            <div class="form-group mt-3">
+                <label>
+                    Tên
+                    <small class="text-muted"> Tên của Liên Chi Đoàn</small>
+                </label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="Title"
+                       readonly />
+            </div>
+            <div class="form-group mt-3">
+                <label>
+                    Mã Liên Chi Khoa
+                    <small class="text-muted"> Mã trong trường</small>
+                </label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="ShortTitle"
+                       readonly />
+            </div>
+            <div class="form-group mt-3">
+                <label>
+                    Mô tả
+                </label>
+                <textarea asp-for="Description" class="form-control" readonly></textarea>
+            </div>
+            <div class="form-group mt-3">
+                <label>
+                    Ngày tạo
+                </label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="CreatedAt"
+                       readonly />
+            </div>
+            <div class="form-group mt-3">
+                <label>
+                    Ngày cập nhật cuối
+                </label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="UpdatedAt"
+                       readonly />
+            </div>
+            <div class="form-group mt-3">
+                <label>
+                    Người tạo
+                </label>
+                @{
+                    foreach (var u in ViewBag.User)
+                    {
+                        if (Model.UseridCreated == u.Id)
+                        {
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="@u.Fullname"
+                                   readonly />
+                        }
+                    }
+                }
+
+            </div>
+            <div class="form-group mt-3">
+                <label>
+                    Người cập nhật cuối
+                </label>
+                @{
+                    foreach (var u in ViewBag.User)
+                    {
+                        if (Model.UseridUpdated == u.Id)
+                        {
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="@u.Fullname"
+                                   readonly />
+                        }
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+
+</div>
+   

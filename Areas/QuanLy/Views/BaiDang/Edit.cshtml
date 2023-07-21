@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model QLDV.Data.Article
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-horizontal" method="post" asp-area="QuanLy" asp-controller="BaiDang" asp-action="Edit" asp-route-id="@Model.Id" enctype="multipart/form-data">
+                <h5 class="card-title mb-0">Sửa bài đăng</h5>
+                <div class="form-group mt-3">
+                    <label>
+                        Tiêu đề
+
+                    </label>
+
+                    <input type="text"
+                           class="form-control"
+                           asp-for="Id" hidden readonly />
+                    <input type="text"
+                           class="form-control"
+                           asp-for="Title" />
+                </div>
+                <div class="form-group mt-3">
+                    <label>
+                        Nội dung
+                    </label>
+
+                    <textarea asp-for="Content"
+                              class="form-control">
+            </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        File Pdf
+                    </label>
+                    <div class="custom-file">
+                        <input asp-for="PdfFile" type="file"
+                               accept=".pdf"
+                               class="custom-file-input">
+                        <div class="invalid-feedback">
+                            Example invalid custom file feedback
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary">
+                            Sửa
+                        </button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+</div>

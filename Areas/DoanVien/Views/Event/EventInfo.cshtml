@@ -1,0 +1,100 @@
+﻿@model QLDV.Data.Event
+<html>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <head>
+         <link rel="stylesheet" href="~/DoanVien/assets/vendors/bootstrap/bootstrap.bundle.min.js">
+  <link rel="stylesheet" href="~/DoanVien//assets/vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/linericon/style.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.carousel.min.css">
+
+  <link rel="stylesheet" href="~/DoanVien/dist/css/style.css">
+    </head>
+    <body  >
+ <section class="blog-post-area section-margin">
+    <div class="container">
+     <div class="row">
+             <div class="col-lg-8">
+         <div>
+            <div class="row">
+            <div class="col-md-12" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                <h2 style="margin: 5px 0;font-size: 26px;">
+                    <a style="color: #337ab7;text-decoration: none;"  >
+                      @Model.Title
+                    </a>
+                </h2>
+            </div>
+        </div>
+        
+        <div class="row" style="margin-top:10px">
+            <div class="col-md-12" style="color: #888; padding-bottom: 10px; border-bottom: 1px solid #E8E8E8; margin-bottom: 10px;">
+                <span>Ngày đăng:&nbsp;</span><span style="color:#1b8d06">@Model.CreatedAt</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <span>Người đăng:&nbsp;&nbsp;<i class="fa fa-user"></i>&nbsp;</span><span style="font-size:14px;color:#ff6a00">
+               Admin
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+        <img class="img-fluid"  src="~/Events/images/@Model.Image" style="object-fit:cover;width:100%" alt="AnhSK">
+        <div class="row" style="margin-top:10px">
+            <div class="col-md-10 col-md-offset-1" style="line-height:25px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:15px">
+                <p>@Model.Content</p>
+            </div>
+        </div>
+
+      
+        </div> 
+        </div>
+          
+
+     @if (!string.IsNullOrEmpty(TempData["Message"] as string))
+    {
+    <div class="alert alert-success">@TempData["Message"]</div>
+    }                   
+
+        
+
+        <!-- Start Blog Post Siddebar -->
+       
+            <div class="col-lg-4 sidebar-widgets">
+            <div class="widget-wrap">
+              <form method="post" enctype="multipart/form-data" action="/Events/UploadEventUser">
+                  <div class="single-sidebar-widget newsletter-widget">
+                <h4 class="single-sidebar-widget__title">GỬI MINH CHỨNG THAM GIA</h4>
+                <div class="form-group mt-30">
+                  <div class="col-autos">
+                      <div class="form-group">
+                        <div >
+                            <input asp-for="imageFile" type="file"
+                                   accept="image/*"
+                                   onchange="document.getElementById('UserUpLoad').src = window.URL.createObjectURL(this.files[0])" >
+                            <div class="mt-2">
+                                <img id="UserUpLoad" src="" width="230" height="230" style="border:1px " />
+                            </div>
+                        </div>
+                </div>
+                     <input type="text" class="form-control" name="Note" placeholder="Ghi chú">
+                      <input type="hidden" name="EventId" value="@Model.Id"> 
+                  </div>
+                </div>
+                <button class="bbtns d-block mt-20 w-100" type="submit">GỬI MINH CHỨNG</button>
+              </div>
+              </form>
+
+
+            
+
+
+               
+              </div>
+            </div>
+ 
+          </div>
+        <!-- End Blog Post Siddebar -->
+      </div>
+  </section>
+    </body>
+</html>

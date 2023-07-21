@@ -1,0 +1,436 @@
+﻿
+@{
+}
+@model QLDV.Data.User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    	<title>Đoàn Viên</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+     <!-- Libraries Stylesheet -->
+    <link href="~/DoanVien/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/DoanVien/dist/css/style.css" rel="stylesheet">
+
+</head>
+
+    <body>
+    <form method="post" asp-action="Edit" asp-controller="Profile" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-body">
+            <div class="margin-horizontal">
+                <h5 class="card-title mb-0">Thông tin cá nhân</h5>
+             <button class="btn btn-primary text-white" type="submit">Lưu</button>
+            </div>
+            <div class="margin-horizontal" >
+                <div class="formGroup mt-3">
+                <div class="mt-3">
+                <label>
+                    Mã sinh viên<b class="text-danger">(*)</b>
+                </label>
+                <input id="IdStudent" type="text"
+                        asp-for="IdStudent"
+                       class="form-control date-inputmask"
+                       />
+                    </div>
+            <div class="mt-3" >
+                <label>
+                    Họ và tên<b class="text-danger">(*)</b>
+                </label>
+                <input id="Fullname" type="text"
+                    asp-for="Fullname"
+                       class="form-control date-inputmask"
+                       />
+            </div>
+              <div class="margin-horizontal">
+                <div class="formGroup mt-3">
+                <label>
+                   Ngày sinh<b class="text-danger">(*)</b>
+                </label>
+                <input id="Birthday" type="date"
+                    asp-for="Birthday"
+                       class="form-control date-inputmask"
+                       />
+            </div>
+            <div class="formGroup mt-3">
+                <label>
+                  Giới tính<b class="text-danger">(*)</b>
+                </label>
+               <select id="Gender" asp-for="Gender" class="form-control date-inputmask">
+                   <option value="0">Chọn giới tính</option>
+                   <option value="Nữ">Nữ</option>
+                   <option value="Nam">Nam</option>
+               </select>
+            </div>
+            </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Hình ảnh
+                        </label>
+                        <div >
+                            <input asp-for="imageFile" type="file"
+                                   accept="image/*"
+                                   onchange="document.getElementById('ImagePrev').src = window.URL.createObjectURL(this.files[0])" >
+                            <div class="mt-2">
+                                <img id="ImagePrev" src="~/Users/Images/@Model.Image" width="230" height="230" style="border:1px " />
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
+          
+            <div class="margin-horizontal ">
+                <div class="formGroup mt-3">
+                <label>
+                  Dân tộc<b class="text-danger">(*)</b>
+                </label>
+                <select id="Ethnic" asp-for="Ethnic" class="form-control date-inputmask">
+                <option value="0" >Chọn dân tộc</option>
+                <option value="Kinh">Kinh</option>
+                <option value="Tày">Tày</option>
+                <option value="Thái">Thái</option>
+                <option value="Hoa">Hoa</option>
+                <option value="Khơ-me">Khơ-me</option>
+                <option value="Mường">Mường</option>
+                <option value="Nùng">Nùng</option>
+                <option value="HMông">HMông</option>
+                <option value="Dao">Dao</option>
+                <option value="Gia-rai">Gia-rai</option>
+                <option value="Ngái">Ngái</option>
+                <option value="Ê-đê">Ê-đê</option>
+                <option value="Ba na">Ba na</option>
+                <option value="Xơ-Đăng">Xơ-Đăng</option>
+                <option value="Sán Chay">Sán Chay</option>
+                <option value="Cơ-ho">Cơ-ho</option>
+                <option value="Chăm">Chăm</option>
+                <option value="Sán Dìu">Sán Dìu</option>
+                <option value="Hrê">Hrê</option>
+                <option value="Mnông">Mnông</option>
+                <option value="Ra-glai">Ra-glai</option>
+                <option value="Xtiêng">Xtiêng</option>
+                <option value="Bru-Vân Kiều">Bru-Vân Kiều</option>
+                <option value="Thổ">Thổ</option>
+                <option value="Giáy">Giáy</option>
+                <option value="Cơ-tu">Cơ-tu</option>
+                <option value="Gié Triêng">Gié Triêng</option>
+                <option value="Mạ">Mạ</option>
+                <option value="Khơ-mú">Khơ-mú</option>
+                <option value="Co">Co</option>
+                <option value="Tà-ôi">Tà-ôi</option>
+                <option value="Chơ-ro">Chơ-ro</option>
+                <option value="Kháng">Kháng</option>
+                <option value="Xinh-mun">Xinh-mun</option>
+                <option value="Hà Nhì">Hà Nhì</option>
+                <option value="Chu ru">Chu ru</option>
+                <option value="Lào">Lào</option>
+                <option value="La Chí">La Chí</option>
+                <option value="La Ha">La Ha</option>
+                <option value="Phù Lá">Phù Lá</option>
+                <option value="La Hủ">La Hủ</option>
+                <option value="Lự">Lự</option>
+                <option value="Lô Lô">Lô Lô</option>
+                <option value="Chứt">Chứt</option>
+                <option value="Mảng">Mảng</option>
+                <option value="Pà Thẻn">Pà Thẻn</option>
+                <option value="Co Lao">Co Lao</option>
+                <option value="Cống">Cống</option>
+                <option value="Bố Y">Bố Y</option>
+                <option value="Si La">Si La</option>
+                <option value="Pu Péo">Pu Péo</option>
+                <option value="Brâu">Brâu</option>
+                <option value="Ơ Đu">Ơ Đu</option>
+                <option value="Rơ măm">Rơ măm</option>
+                <option value="Người nước ngoài">Người nước ngoài</option>
+                </select>
+            </div><div class="formGroup mt-3">
+                <label>
+                 Tôn giáo<b class="text-danger">(*)</b>
+                </label>
+                       <select id="Religion" asp-for="Religion" class="form-control date-inputmask">
+                        <option value="0">Chọn tôn giáo</option>
+                        <option value="Phật giáo">Phật giáo</option>
+                        <option value="Công giáo">Công giáo</option>
+                        <option value="Phật giáo Hoà Hảo">Phật giáo Hoà Hảo</option>
+                        <option value="Hồi giáo">Hồi giáo</option>
+                        <option value="Cao Đài">Cao Đài</option>
+                        <option value="Minh sư đạo">Minh sư đạo</option>
+                        <option value="Minh Lý đạo">Minh Lý đạo</option>
+                        <option value="Tin Lành">Tin Lành</option>
+                        <option value="Tịnh độ cư sĩ Phật hội Việt Nam">Tịnh độ cư sĩ Phật hội Việt Nam</option>
+                        <option value="Đạo Tứ ấn hiếu nghĩa">Đạo Tứ ấn hiếu nghĩa</option>
+                        <option value="Bửu sơn Kỳ hương">Bửu sơn Kỳ hương</option>
+                        <option value="Ba Ha'i">Ba Ha'i</option>
+                        <option value="Hòa Hảo">Hòa Hảo</option>
+                        <option value="Không">Không</option>
+                        </select>   
+            </div>
+            <div class="formGroup mt-3">
+                <label>
+                  Nghề nghiệp<b class="text-danger">(*)</b>
+                </label>
+                <select id="Profession" asp-for="Profession" class="form-control m-b ">
+                <option value="0">Chọn nghề nghiệp</option>
+                <option value="Sinh Viên">Sinh Viên</option>
+                <option value="Giảng Viên">Giảng Viên</option>
+                </select>
+            </div>
+            <div class="formGroup mt-3">
+                <label>
+                  Số điện thoại
+                </label>
+                <input type="text" asp-for="Phone" class="form-control date-inputmask"/>
+            </div>  
+            </div>            					
+                <div class="margin-horizontal">
+                            <div class="formGroup mt-3">
+                                <label>
+                                    <span>Thường trú (Tỉnh/Thành Phố) <b class="text-danger">(*)</b></span>
+                                </label>
+                                  <select id="ResidenceCity" asp-for="ResidenceCity" class="form-control date-inputmask" >
+                                    <option value="0">Chọn tình/thành phố</option>
+                                    <option value="Thành phố Hà Nội">Thành phố Hà Nội</option>
+                                    <option value="Thành phố Hồ Chí Minh">Thành phố Hồ Chí Minh</option>
+                                    <option value="Tỉnh An Giang">Tỉnh An Giang</option>
+                                    <option value="Tỉnh Bắc Giang">Tỉnh Bắc Giang</option>
+                                    <option value="Tỉnh Bắc Kạn">Tỉnh Bắc Kạn</option>
+                                    <option value="Tỉnh Bạc Liêu">Tỉnh Bạc Liêu</option>
+                                    <option value="Tỉnh Bắc Ninh">Tỉnh Bắc Ninh</option>
+                                    <option value="Tỉnh Bà Rịa - Vũng Tàu">Tỉnh Bà Rịa - Vũng Tàu</option>
+                                    <option value="Tỉnh Bến Tre">Tỉnh Bến Tre</option>
+                                    <option value="Tỉnh Bình Định">Tỉnh Bình Định</option>
+                                    <option value="Tỉnh Bình Dương">Tỉnh Bình Dương</option>
+                                    <option value="Tỉnh Bình Phước">Tỉnh Bình Phước</option>
+                                    <option value="Tỉnh Bình Thuận">Tỉnh Bình Thuận</option>
+                                    <option value="Tỉnh Cà Mau">Tỉnh Cà Mau</option>
+                                    <option value="Thành phố Cần Thơ">Thành phố Cần Thơ</option>
+                                    <option value="Tỉnh Cao Bằng">Tỉnh Cao Bằng</option>
+                                    <option value="Tỉnh Đắk Lắk">Tỉnh Đắk Lắk</option>
+                                    <option value="Tỉnh Đắk Nông">Tỉnh Đắk Nông</option>
+                                    <option value="Thành phố Đà Nẵng">Thành phố Đà Nẵng</option>
+                                    <option value="Tỉnh Điện Biên">Tỉnh Điện Biên</option>
+                                    <option value="Tỉnh Đồng Nai">Tỉnh Đồng Nai</option>
+                                    <option value="Tỉnh Đồng Tháp">Tỉnh Đồng Tháp</option>
+                                    <option value="Tỉnh Gia Lai">Tỉnh Gia Lai</option>
+                                    <option value="Tỉnh Hà Giang">Tỉnh Hà Giang</option>
+                                    <option value="Tỉnh Hải Dương">Tỉnh Hải Dương</option>
+                                    <option value="Thành phố Hải Phòng">Thành phố Hải Phòng</option>
+                                    <option value="Tỉnh Hà Nam">Tỉnh Hà Nam</option>
+                                    <option value="Tỉnh Hà Tĩnh">Tỉnh Hà Tĩnh</option>
+                                    <option value="Tỉnh Hậu Giang">Tỉnh Hậu Giang</option>
+                                    <option value="Tỉnh Hoà Bình">Tỉnh Hoà Bình</option>
+                                    <option value="Tỉnh Hưng Yên">Tỉnh Hưng Yên</option>
+                                    <option value="Tỉnh Khánh Hòa">Tỉnh Khánh Hòa</option>
+                                    <option value="Tỉnh Kiên Giang">Tỉnh Kiên Giang</option>
+                                    <option value="Tỉnh Kon Tum">Tỉnh Kon Tum</option>
+                                    <option value="Tỉnh Lai Châu">Tỉnh Lai Châu</option>
+                                    <option value="Tỉnh Lâm Đồng">Tỉnh Lâm Đồng</option>
+                                    <option value="Tỉnh Lạng Sơn">Tỉnh Lạng Sơn</option>
+                                    <option value="Tỉnh Lào Cai">Tỉnh Lào Cai</option>
+                                    <option value="Tỉnh Long An">Tỉnh Long An</option>
+                                    <option value="Tỉnh Nam Định">Tỉnh Nam Định</option>
+                                    <option value="Tỉnh Nghệ An">Tỉnh Nghệ An</option>
+                                    <option value="Tỉnh Ninh Bình">Tỉnh Ninh Bình</option>
+                                    <option value="Tỉnh Ninh Thuận">Tỉnh Ninh Thuận</option>
+                                    <option value="Tỉnh Phú Thọ">Tỉnh Phú Thọ</option>
+                                    <option value="Tỉnh Phú Yên">Tỉnh Phú Yên</option>
+                                    <option value="Tỉnh Quảng Bình">Tỉnh Quảng Bình</option>
+                                    <option value="Tỉnh Quảng Nam">Tỉnh Quảng Nam</option>
+                                    <option value="Tỉnh Quảng Ngãi">Tỉnh Quảng Ngãi</option>
+                                    <option value="Tỉnh Quảng Ninh">Tỉnh Quảng Ninh</option>
+                                    <option value="Tỉnh Quảng Trị">Tỉnh Quảng Trị</option>
+                                    <option value="Tỉnh Sóc Trăng">Tỉnh Sóc Trăng</option>
+                                    <option value="Tỉnh Sơn La">Tỉnh Sơn La</option>
+                                    <option value="Tỉnh Tây Ninh">Tỉnh Tây Ninh</option>
+                                    <option value="Tỉnh Thái Bình">Tỉnh Thái Bình</option>
+                                    <option value="Tỉnh Thái Nguyên">Tỉnh Thái Nguyên</option>
+                                    <option value="Tỉnh Thanh Hóa">Tỉnh Thanh Hóa</option>
+                                    <option value="Tỉnh Thừa Thiên Huế">Tỉnh Thừa Thiên Huế</option>
+                                    <option value="Tỉnh Tiền Giang">Tỉnh Tiền Giang</option>
+                                    <option value="Tỉnh Trà Vinh">Tỉnh Trà Vinh</option>
+                                    <option value="Tỉnh Tuyên Quang">Tỉnh Tuyên Quang</option>
+                                    <option value="Tỉnh Vĩnh Long">Tỉnh Vĩnh Long</option>
+                                    <option value="Tỉnh Vĩnh Phúc">Tỉnh Vĩnh Phúc</option>
+                                    <option value="Tỉnh Yên Bái">Tỉnh Yên Bái</option>
+                                    </select>   
+                            </div>
+                        
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Thường trú (Quận/Huyện) <b class="text-danger">(*)</b></span>
+                                </label>
+                                 <input id="ResidenceDistrict"  type="text" asp-for="ResidenceDistrict" class="form-control date-inputmask" />
+                           
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Thường trú (Phường xã) <b class="text-danger">(*)</b></span>
+                                </label>
+                                  <input id="ResidenceWard" type="text" asp-for="ResidenceWard" class="form-control date-inputmask" />
+                            </div>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Thường trú (Địa chỉ cụ thể) <b class="text-danger">(*)</b></span>
+                                </label>
+                                <input id="ResidenceAddress" type="text" asp-for="ResidenceAddress" class="form-control date-inputmask" />
+                        </div>	
+                         <div class="margin-horizontal">
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Trình độ văn hóa <b class="text-danger">(*)</b></span>
+                                </label>
+                                <select id="LevelEducation" asp-for="LevelEducation" class="form-control date-inputmask">
+                                    <option value="0">Chọn trình độ</option>
+                                    <option value="Tiểu học">Tiểu học</option>
+                                    <option value="Trung học cơ sở">Trung học cơ sở</option>
+                                    <option value="Trung học phổ thông hệ 10/10">Trung học phổ thông hệ 10/10</option>
+                                    <option value="Trung học phổ thông hệ 12/12">Trung học phổ thông hệ 12/12</option>
+                                    </select>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Trình độ chuyên môn</span>
+                                </label>
+                                <select id="LevelSpecialize" asp-for="LevelSpecialize" class="form-control date-inputmask">
+                                    <option value="0">Chọn trình độ</option>
+                                    <option value="Chưa có">Chưa có</option>
+                                    <option value="Sơ cấp">Sơ cấp</option>
+                                    <option value="Trung cấp">Trung cấp</option>
+                                    <option value="Cao đẳng">Cao đẳng</option>
+                                    <option value="Cử nhân">Cử nhân</option>
+                                    <option value="Thạc sĩ">Thạc sĩ</option>
+                                    <option value="Tiến sĩ">Tiến sĩ</option>
+                                    </select>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label>
+                                    <span>Lí luận chính trị</span>
+                                </label>
+                                <select id="LevelPolitics" asp-for="LevelPolitics" class="form-control date-inputmask">
+                                      <option value="0">Chọn trình độ</option>
+                                       <option value="Chưa có">Chưa có</option>
+                                       <option value="Sơ cấp">Sơ cấp</option>
+                                       <option value="Trung cấp">Trung cấp</option>
+                                       <option value="Cao cấp">Cao cấp</option>
+                                       <option value="Cử nhân">Cử nhân</option>
+                                       </select>
+                        </div>
+                        </div>
+                        <div class="margin-horizontal">
+                             <div class="formGroup mt-3">
+                                <label >
+                                    <span>Tin học</span>
+                                </label>
+                                <select id="LevelComputer" asp-for="LevelComputer" class="form-control date-inputmask">
+                                      <option value="0">Chọn trình độ</option>
+                                       <option value="Chưa có">Chưa có</option>
+                                       <option value="Chuẩn kỹ năng sử dụng CNTT cơ bản">Chuẩn kỹ năng sử dụng CNTT cơ bản</option>
+                                       <option value="Chuẩn kỹ năng sử dụng CNTT nâng cao">Chuẩn kỹ năng sử dụng CNTT nâng cao</option>
+                                       </select>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Ngoại ngữ</span>
+                                </label>
+                                <select id="LevelLanguage" asp-for="LevelLanguage" class="form-control date-inputmask">
+                                    <option value="0">Chọn trình độ</option>
+                                    <option value="Chưa có">Chưa có</option>
+                                    <option value="Bậc 1">Bậc 1</option>
+                                    <option value="Bậc 2">Bậc 2</option>
+                                    <option value="Bậc 3">Bậc 3</option>
+                                    <option value="Bậc 4">Bậc 4</option>
+                                    <option value="Bậc 5">Bậc 5</option>
+                                    <option value="Bậc 6">Bậc 6</option>
+                                    </select>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label >
+                                    <span>Chức vụ Hội</span>
+                                </label>
+                                <select asp-for="UserCatalogueId" class="form-control date-inputmask" disabled >
+                                <option value="1">Đoàn Viên</option>
+                                <option value="2">Bí thư Chi Đoàn</option>
+                                <option value="3">Bí thư Liên Chi Đoàn</option>
+                                <option value="4">Bí thư Đoàn Trường</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="formGroup mt-3">
+                                <label class="control-label text-left">
+                                    <span>Ngày vào Đoàn <b class="text-danger">(*)</b></span>
+                                </label>
+                                <input type="date" asp-for="DayInUnion"class="form-control datetimepicker"/>
+                        </div>
+            
+                </div>
+               
+                </div>
+
+          </form>
+  </body>
+  <script>
+  function validateForm() {
+    var ethnicValue = document.getElementById("Ethnic").value;
+    var religionValue = document.getElementById("Religion").value;
+    var professionValue = document.getElementById("Profession").value;
+    var residenceCityValue = document.getElementById("ResidenceCity").value;
+    var GenderValue = document.getElementById("Gender").value;
+    var LevelEducationValue = document.getElementById("LevelEducation").value;
+    var LevelSpecializeValue = document.getElementById("LevelSpecialize").value;
+    var LevelPoliticsValue = document.getElementById("LevelPolitics").value;
+    var LevelComputerValue = document.getElementById("LevelComputer").value;
+    var LevelLanguageValue = document.getElementById("LevelLanguage").value;
+    if (ethnicValue === "0") {
+      alert("Vui lòng chọn Dân tộc");
+      return false;
+    }
+    if (GenderValue === "0") {
+      alert("Vui lòng chọn Giới tính!");
+      return false;
+    }
+    if (religionValue === "0" ){
+        alert("Vui lòng chọn Tôn giáo");
+        return false;
+    }
+    if (professionValue === "0"){
+        alert("Vui lòng chọn Nghề Nghiệp!");
+        return false;
+    }
+     if (residenceCityValue === "0"){
+        alert("Vui lòng chọn Tỉnh/thành phố");
+        return false;
+    }
+    if (LevelEducationValue === "0"){
+        alert("Vui lòng chọn Trình độ học vấn");
+        return false;
+    }
+    if (LevelSpecializeValue === "0"){
+        alert("Vui lòng chọn Trình độ chuyên môn");
+        return false;
+    }
+    if (LevelPoliticsValue === "0"){
+        alert("Vui lòng chọn Trình độ lí luận chính trị");
+        return false;
+    }
+    if (LevelComputerValue === "0"){
+        alert("Vui lòng chọn Trình độ tin học");
+        return false;
+    }
+    if (LevelLanguageValue === "0"){
+        alert("Vui lòng chọn Trình độ ngoại ngữ");
+        return false;
+    }
+    return true;
+  }
+</script>
+
+</html>  

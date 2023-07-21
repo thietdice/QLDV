@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    	<title>Đoàn Viên</title>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Google Web Fonts -->
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="~/DoanVien//assets/vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/linericon/style.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="~/DoanVien/assets/vendors/owl-carousel/owl.carousel.min.css">
+
+  <link rel="stylesheet" href="~/DoanVien/dist/css/style.css">
+
+</head>
+<body>
+    
+	 <!-- Navbar Start -->
+<div class="header_area">
+        <div class="main_menu" style="background-color:#0D509C">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container box_1620">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand logo_h" asp-area="DoanVien" asp-action="Index" asp-controller="Home"><img src="~/DoanVien/assets/img/huy_hieu_doan.png" width="45" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav justify-content-center">
+              <li class="nav-item" id="Trangchu"><a class="nav-link" asp-area="DoanVien" asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+              <li class="nav-item" id="Thongtincanhan"><a class="nav-link" asp-area="DoanVien" asp-action="Index" asp-controller="Profile">Thông tin cá nhân</a></li>
+              <li class="nav-item" id="sukien"><a class="nav-link" asp-area="DoanVien" asp-action="Index" asp-controller="Events">Sự kiện</a>
+              <li class="nav-item"><a class="nav-link" asp-area="DoanVien" asp-action="Article" asp-controller="Home">Bài viết</a></li>
+            </ul>
+            <ul class="nav navbar-nav" style="border:2px solid black; border-radius:60px" >
+              <li class="nav-item submenu dropdown">
+                 @{
+
+                                string sessionName = Context.Session.GetString("LoginName");
+                                <a class="nav-link"
+                                   href="#"
+                                   id="navbarDropdown"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false"
+                                   style="justify-content:center;align-items:center;display:flex;width:180px;height:0px">
+                                    @sessionName
+                                </a>
+
+                            }
+                <ul class="dropdown-menu" style="margin-top:5px">
+                  
+                  <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="XemDiem" asp-area="DoanVien">Điểm rèn luyện</a></li>
+                  <li class="nav-item"><a class="nav-link" asp-area="QuanLy" asp-controller="Home"  asp-action="DangXuat">Đăng xuất</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div> 
+        </div>
+      </nav>
+    </div>
+ </div>
+    <!-- Navbar End -->
+
+    @RenderBody()
+
+   
+    <!-- Footer Start -->
+    <footer class="footer-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3  col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>Quản lí đoàn viên</h6>
+            <p>
+             Đươc thực hiện bởi nhóm 7
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4  col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>Thành viên nhóm</h6>
+            <p>Phạm Ngọc Thiết</p>
+            <p>Trương Trọng Hùng</p>
+            <p>Nguyễn Đức Tùng Lâm</p>
+    </div>
+  </footer>
+   
+    <!-- Footer End -->
+    
+</body>
+</html>

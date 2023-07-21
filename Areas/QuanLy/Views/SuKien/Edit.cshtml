@@ -1,0 +1,113 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model QLDV.Data.Event
+<div class="container-fluid">
+    <div class="card">
+        <form class="form-horizontal" method="post" asp-area="QuanLy" asp-controller="SuKien" asp-action="Edit" enctype="multipart/form-data" asp-route-id="@Model.Id">
+            <div class="card-body">
+                <h4 class="card-title">Nhập thông tin</h4>
+                <div class="form-group">
+                    <label>
+                        Kì học
+                    </label>
+                    <select asp-for="SemesterId" asp-items="ViewBag.Semesters" class="select2 form-select shadow-none"
+                            style="width: 100%; height: 36px">
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Tên Sự Kiện
+
+                    </label>
+                    <input asp-for="Title" type="text"
+                           class="form-control  "
+                           id="phone-mask"
+                           placeholder=" " />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Mô tả
+
+                    </label>
+                    <input asp-for="Description" type="text"
+                           class="form-control  "
+                           id="phone-mask"
+                           placeholder=" " />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Nội dung
+
+                    </label>
+                    <textarea asp-for="Content" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="mt-3">Ngày bắt đầu</label>
+                    <div class="input-group">
+                        <input asp-for="DayStart" type="text"
+                               class="form-control mydatepicker" />
+                        <div class="input-group-append">
+                            <span class="input-group-text h-100">
+                                <i class="mdi mdi-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="mt-3">Ngày kết thúc</label>
+                    <div class="input-group">
+                        <input asp-for="DayEnd" type="text"
+                               class="form-control mydatepicker" />
+                        <div class="input-group-append">
+                            <span class="input-group-text h-100">
+                                <i class="mdi mdi-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Trị giá Điểm
+
+                    </label>
+                    <input asp-for="Score" type="text"
+                           class="form-control  "
+                           id="phone-mask"
+                           placeholder=" " />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Hình ảnh
+
+                    </label>
+                    <div class="custom-file">
+                        <input asp-for="imageFile" type="file"
+                               accept="image/*"
+                               class="custom-file-input"
+                               onchange="document.getElementById('ImagePrev').src = window.URL.createObjectURL(this.files[0])">
+                        <div class="invalid-feedback">
+                            Example invalid custom file feedback
+                        </div>
+                    </div>
+                    <img id="ImagePrev" src="~/Events/images/@Model.Image" width="900" height="750" style="border:1px ; margin-top:20px" />
+                </div>
+
+            </div>
+            <div class="border-top">
+                <div class="card-body">
+                    <button type="submit" class="btn btn-primary">
+                        Sửa
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

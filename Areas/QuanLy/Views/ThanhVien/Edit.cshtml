@@ -1,0 +1,307 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model QLDV.Data.User
+
+<div class="container-fluid">
+    <form class="form-horizontal" method="post" asp-area="QuanLy" asp-controller="ThanhVien" asp-action="Edit" enctype="multipart/form-data">
+        <div class="card">
+
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <div class="card-body">
+
+                        <h5 class="card-title">Sửa thông tin Đoàn Viên</h5>
+                        <input asp-for="Id" type="text"
+                               class="form-control  "
+                               id="phone-mask"
+                               placeholder=" " hidden readonly />
+
+                        <div class="form-group mt-3">
+                            <label>
+                                Chức vụ
+
+                            </label>
+                            <select asp-for="UserCatalogueId" asp-items="ViewBag.UserCata" class="select2 form-select shadow-none"
+                                    style="width: 100%; height: 36px">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Họ và tên
+
+                            </label>
+                            <input asp-for="Fullname" type="text"
+                                   class="form-control  "
+                                   id="phone-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Email
+
+                            </label>
+                            <input asp-for="Email" type="text"
+                                   class="form-control  "
+                                   id="phone-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Mật khẩu
+
+                            </label>
+                            <input asp-for="Password" type="text"
+                                   class="form-control  "
+                                   id="international-mask"
+                                   placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Mã sinh viên
+
+                            </label>
+                            <input asp-for="IdStudent" type="text"
+                                   class="form-control x "
+                                   id="xphone-mask"
+                                   placeholder=" " />
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Chi Đoàn
+
+                            </label>
+                            <select asp-for="ClassId" asp-items="ViewBag.Classes" class="select2 form-select shadow-none"
+                                    style="width: 100%; height: 36px">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="mt-3">Ngày sinh</label>
+                            <div class="input-group">
+                                <input asp-for="Birthday" type="text"
+                                       class="form-control mydatepicker" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text h-100">
+                                        <i class="mdi mdi-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Giới tính
+
+                            </label>
+                            <input asp-for="Gender" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Dân tộc
+
+                            </label>
+                            <input asp-for="Ethnic" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Tôn giáo
+
+                            </label>
+                            <input asp-for="Religion" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                CCCD
+
+                            </label>
+                            <input asp-for="IdCard" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Nghề nghiệp
+
+                            </label>
+                            <input asp-for="Profession" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary">
+                                    Sửa
+                                </button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <!-- ============================================================== -->
+                <!-- Bên phải -->
+                <!-- ============================================================== -->
+                <div class="col-md-6">
+                    <div class="card-body">
+
+                        <div class="form-group-mt-3">
+                            <label>
+                                Trình độ học vấn
+
+                            </label>
+                            <input asp-for="LevelEducation" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Trình độ chuyên môn
+
+                            </label>
+                            <input asp-for="LevelSpecialize" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Trình độ chính trị
+
+                            </label>
+                            <input asp-for="LevelPolitics" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Trình độ tin học
+
+                            </label>
+                            <input asp-for="LevelComputer" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Trình độ ngoại ngữ
+
+                            </label>
+                            <input asp-for="LevelLanguage" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label class="mt-3">Ngày vào Đoàn</label>
+                            <div class="input-group">
+                                <input asp-for="DayInUnion" type="text"
+                                       class="form-control mydatepicker" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text h-100">
+                                        <i class="mdi mdi-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                SĐT
+
+                            </label>
+                            <input asp-for="Phone" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Địa chỉ
+
+                            </label>
+                            <input asp-for="ResidenceAddress" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Tỉnh/TP
+
+                            </label>
+                            <input asp-for="ResidenceCity" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Quận/Huyện
+
+                            </label>
+                            <input asp-for="ResidenceDistrict" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Phường/Xã
+
+                            </label>
+                            <input asp-for="ResidenceWard" type="text"
+                                   class="form-control  "
+                                   id="purchase-mask"
+                                   placeholder=" " />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Hình ảnh
+
+                            </label>
+                            <div class="custom-file">
+                                <input asp-for="imageFile" type="file"
+                                       accept="image/*"
+                                       class="custom-file-input"
+                                       onchange="document.getElementById('ImagePrev').src = window.URL.createObjectURL(this.files[0])">
+                                <div class="invalid-feedback">
+                                    Example invalid custom file feedback
+                                </div>
+                                <div>
+                                    <img id="ImagePrev" src="~/Users/Images/@Model.Image" width="150" height="150" style="border:1px ; margin-top:20px" />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
